@@ -61,12 +61,15 @@ public class StoreInventory {
             int id = Integer.parseInt(scanner.nextLine().trim());
             Product matchedProduct = inventory.get(id);
 
-            if (matchedProduct != null) {
+            if (matchedProduct == null) {
                 System.out.println("We don't carry that product");
                 return;
             }
 
-
+            System.out.printf("We carry %s and the price is $%.2f%n",
+                    matchedProduct.getName(), matchedProduct.getPrice());
+        } catch (NumberFormatException e) {
+            System.out.println("That wasn't a valid item number. Please enter a whole number.");
         }
     }
 }
